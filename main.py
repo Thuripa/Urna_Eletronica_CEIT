@@ -1,6 +1,9 @@
 # Projeto Urna CEIT
 import sys
 
+from PyQt6.QtWidgets import QApplication, QWidget, QPushButton
+from PyQt6 import uic
+
 
 # Função Que busca o Token na Lista
 def valida_token():
@@ -15,13 +18,21 @@ def valida_token():
             if usuario == linha.strip():
                 arquivo.close()
                 return True
-            else:
-                print(usuario, " != ", linha.strip())
 
         # Se não encontrar o token retorna FALSO e fecha o arquivo
         arquivo.close()
         return False
 
+
+#
+# INICIO
+#
+# Carrega Interface
+uic.loadUi('tela_inicial.ui')
+
+app = QApplication(sys.argv)
+
+app.show()
 
 # Entrada do usuário (No caso seria o texto de um objeto da UI)
 usuario = input("Insira seu Token de Aluno: ")
