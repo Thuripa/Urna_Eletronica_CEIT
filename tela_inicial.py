@@ -55,10 +55,10 @@ class Ui_Dialog(object):
                 print("Token Válido!")
 
                 # Abre a tela_voto
-                self.chama_tela_voto()
+                chama_tela_voto()
 
                 # Esconde a janela
-                Dialog.hide()
+
             else:
                 print("Token Inválido!")
 

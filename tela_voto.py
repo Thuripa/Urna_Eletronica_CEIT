@@ -10,8 +10,8 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 
 class Ui_tela_voto(object):
 
-    def clicou(self, token):
-        print("Token: ", token)
+    #def clicou(self, token):
+     #   print("Token: ", token)
 
     def setupUi(self, tela_voto):
 
@@ -45,8 +45,8 @@ class Ui_tela_voto(object):
 
         # Ação do Botão
 
-        self.token = ""
-        self.btn.clicked.connect(self.clicou, self.token)
+        #self.token = ""
+        #self.btn.clicked.connect(self.clicou, self.token)
 
         font = QtGui.QFont()
         font.setPointSize(18)
