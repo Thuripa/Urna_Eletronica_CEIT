@@ -85,7 +85,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>0</y>
+     <y>10</y>
      <width>230</width>
      <height>230</height>
     </rect>
@@ -194,6 +194,24 @@
      <width>32</width>
      <height>32</height>
     </size>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>280</y>
+     <width>221</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>17</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Usuário: </string>
    </property>
   </widget>
  </widget>

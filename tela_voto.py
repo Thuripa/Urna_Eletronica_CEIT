@@ -8,13 +8,9 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
+
 class Ui_tela_voto(object):
-
-    def clicou(self, token):
-        print("Token: ", token)
-
     def setupUi(self, tela_voto):
-
         tela_voto.setObjectName("tela_voto")
         tela_voto.resize(866, 600)
         font = QtGui.QFont()
@@ -26,7 +22,7 @@ class Ui_tela_voto(object):
         self.titulo = QtWidgets.QLabel(tela_voto)
         self.titulo.setGeometry(QtCore.QRect(290, 30, 541, 61))
         font = QtGui.QFont()
-        font.setPointSize(20)
+        font.setPointSize(18)
         font.setBold(True)
         font.setWeight(75)
         self.titulo.setFont(font)
@@ -42,18 +38,12 @@ class Ui_tela_voto(object):
         self.label.setObjectName("label")
         self.btn = QtWidgets.QPushButton(tela_voto)
         self.btn.setGeometry(QtCore.QRect(290, 500, 231, 71))
-
-        # Ação do Botão
-
-        self.token = ""
-        self.btn.clicked.connect(self.clicou, self.token)
-
         font = QtGui.QFont()
         font.setPointSize(18)
         self.btn.setFont(font)
         self.btn.setObjectName("btn")
         self.logo = QtWidgets.QLabel(tela_voto)
-        self.logo.setGeometry(QtCore.QRect(10, 0, 230, 230))
+        self.logo.setGeometry(QtCore.QRect(10, 10, 230, 230))
         self.logo.setText("")
         self.logo.setPixmap(QtGui.QPixmap("UI\\Logo CEIT.png"))
         self.logo.setScaledContents(True)
@@ -86,6 +76,12 @@ class Ui_tela_voto(object):
         self.radioButton_4.setFont(font)
         self.radioButton_4.setIconSize(QtCore.QSize(32, 32))
         self.radioButton_4.setObjectName("radioButton_4")
+        self.label_2 = QtWidgets.QLabel(tela_voto)
+        self.label_2.setGeometry(QtCore.QRect(20, 280, 221, 51))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.label_2.setFont(font)
+        self.label_2.setObjectName("label_2")
 
         self.retranslateUi(tela_voto)
         QtCore.QMetaObject.connectSlotsByName(tela_voto)
@@ -100,6 +96,7 @@ class Ui_tela_voto(object):
         self.radioButton_2.setText(_translate("tela_voto", "Chapa 2"))
         self.radioButton_3.setText(_translate("tela_voto", "Chapa 3"))
         self.radioButton_4.setText(_translate("tela_voto", "Branco"))
+        self.label_2.setText(_translate("tela_voto", "Usuário: "))
 
 
 if __name__ == "__main__":
