@@ -7,7 +7,7 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-from tela_confirmacao_2 import Ui_tela_confirmacao_2
+from tela_confirmacao import Ui_tela_confirmacao
 
 class Ui_tela_voto(object):
 
@@ -45,7 +45,7 @@ class Ui_tela_voto(object):
                 # Cria Janela
                 self.janela = QtWidgets.QDialog()
                 # Cria Interface
-                self.ui = Ui_tela_confirmacao_2()
+                self.ui = Ui_tela_confirmacao()
                 # Chama o Método de "inflar" a interface
                 self.ui.setupUi(self.janela)
                 # Passa o número da chapa como parâmetro para a tela_confirmacao
