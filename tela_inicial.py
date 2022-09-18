@@ -41,7 +41,7 @@ class Ui_Dialog(object):
                 self.chama_tela_voto()
 
                 # Esconde a janela
-
+                tela_inicial.hide()
             else:
                 print("Token Inválido!")
 
@@ -57,6 +57,8 @@ class Ui_Dialog(object):
         self.ui.label_2.setText(self.ui.label_2.text() + self.input.text())
         # Exibe Janela
         self.janela.show()
+        # Esconde tela_inicial
+        tela_inicial.hide()
 
 
 
@@ -124,8 +126,8 @@ class Ui_Dialog(object):
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Dialog = QtWidgets.QDialog()
+    tela_inicial = QtWidgets.QDialog()
     ui = Ui_Dialog()
-    ui.setupUi(Dialog)
-    Dialog.show()
+    ui.setupUi(tela_inicial)
+    tela_inicial.show()
     sys.exit(app.exec())

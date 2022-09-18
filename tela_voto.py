@@ -7,9 +7,54 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-
+from tela_confirmacao_2 import Ui_tela_confirmacao_2
 
 class Ui_tela_voto(object):
+
+    # Função que implementa a ação de clicar no botão
+    def clicou(self):
+
+        chapa = -1
+
+        # Confere qual opção foi escolhida
+        if self.radioButton_1.isChecked():
+            chapa = 1
+        elif self.radioButton_2.isChecked():
+            chapa = 2
+        elif self.radioButton_3.isChecked():
+            chapa = 3
+        elif self.radioButton_4.isChecked():
+            chapa = 0
+
+        # Abre tela_confirmacao
+        self.chama_tela_confirmacao(chapa)
+
+    # Função que chama a tela_confirmacao
+    def chama_tela_confirmacao(self, chapa):
+
+        if chapa == -1:
+            print("Escolha uma opção!")
+        else:
+            if chapa == 0:
+
+                print("Escolheu Votar em Branco")
+
+            # Chama tela_confirmacao
+            else:
+
+                # Cria Janela
+                self.janela = QtWidgets.QDialog()
+                # Cria Interface
+                self.ui = Ui_tela_confirmacao_2()
+                # Chama o Método de "inflar" a interface
+                self.ui.setupUi(self.janela)
+                # Passa o número da chapa como parâmetro para a tela_confirmacao
+                #self.ui.label_18.setText(self.ui.label_18.text()+str(chapa))
+                # Exibe Janela
+                self.janela.show()
+                # Esconde tela_inicial
+                #tela_voto.hide()
+
     def setupUi(self, tela_voto):
         tela_voto.setObjectName("tela_voto")
         tela_voto.resize(866, 600)
@@ -38,6 +83,8 @@ class Ui_tela_voto(object):
         self.label.setObjectName("label")
         self.btn = QtWidgets.QPushButton(tela_voto)
         self.btn.setGeometry(QtCore.QRect(290, 500, 231, 71))
+        self.btn.clicked.connect(self.clicou)
+
         font = QtGui.QFont()
         font.setPointSize(18)
         self.btn.setFont(font)
