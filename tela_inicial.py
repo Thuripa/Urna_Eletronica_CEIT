@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'C:\Users\Guilherme\PycharmProjects\Urna_Eletronica_CEIT/tela_inicial.ui'
+# Form implementation generated from reading ui file 'C:\Users\Guilherme\PycharmProjects\Urna_Eletronica_CEIT\UI\tela_inicial.ui'
 #
 # Created by: PyQt6 UI code generator 6.1.0
 #
@@ -16,6 +16,9 @@ class Ui_Dialog(object):
         font = QtGui.QFont()
         font.setPointSize(8)
         Dialog.setFont(font)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("C:\\Users\\Guilherme\\PycharmProjects\\Urna_Eletronica_CEIT\\UI\\Logo CEIT.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        Dialog.setWindowIcon(icon)
         self.titulo = QtWidgets.QLabel(Dialog)
         self.titulo.setGeometry(QtCore.QRect(290, 30, 541, 61))
         font = QtGui.QFont()
@@ -51,7 +54,7 @@ class Ui_Dialog(object):
         self.logo = QtWidgets.QLabel(Dialog)
         self.logo.setGeometry(QtCore.QRect(10, 0, 230, 230))
         self.logo.setText("")
-        self.logo.setPixmap(QtGui.QPixmap("C:\\Users\\Guilherme\\PycharmProjects\\Urna_Eletronica_CEIT\\../../OneDrive - UNIVALI/Imagens/Logo CEIT.png"))
+        self.logo.setPixmap(QtGui.QPixmap("C:\\Users\\Guilherme\\PycharmProjects\\Urna_Eletronica_CEIT\\UI\\Logo CEIT.png"))
         self.logo.setScaledContents(True)
         self.logo.setObjectName("logo")
 
@@ -60,7 +63,7 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "URNA CEIT"))
         self.titulo.setText(_translate("Dialog", "ELEIÇÕES GRÊMIO ESTUDANTIL CEIT - 2022"))
         self.label.setText(_translate("Dialog", "Insira seu Token de aluno:"))
         self.btn.setText(_translate("Dialog", "Próximo"))

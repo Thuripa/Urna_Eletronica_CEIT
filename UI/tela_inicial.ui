@@ -16,7 +16,11 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>URNA CEIT</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>Logo CEIT.png</normaloff>Logo CEIT.png</iconset>
   </property>
   <widget class="QLabel" name="titulo">
    <property name="geometry">
@@ -114,7 +118,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>../../OneDrive - UNIVALI/Imagens/Logo CEIT.png</pixmap>
+    <pixmap>Logo CEIT.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
