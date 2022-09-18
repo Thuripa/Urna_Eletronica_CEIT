@@ -24,26 +24,9 @@ def valida_token(token):
                 arquivo.close()
                 return True
 
-
-def chama_tela_voto():
-    # Como que chama outra tela mesmo
-    pass
-
 class Ui_Dialog(object):
 
-    # Função que chama a tela_voto
-    def chama_tela_voto(self):
-        # Cria Janela
-        self.janela = QtWidgets.QDialog()
-        # Cria Interface
-        self.ui = Ui_tela_voto()
-        # Chama o Método de "inflar" a interface na janela passando o token como parâmetro
-        self.ui.setupUi(self.janela)
-        # Passa o Token como parâmetro para a tela_voto
-        self.ui.token = ""
-        # Exibe Janela
-        self.janela.show()
-
+    # Função que implementa a ação de clicar no botão
     def clicou(self):
 
         # Verifica entrada do usuário
@@ -62,6 +45,20 @@ class Ui_Dialog(object):
             else:
                 print("Token Inválido!")
 
+    # Função que chama a tela_voto
+    def chama_tela_voto(self):
+        # Cria Janela
+        self.janela = QtWidgets.QDialog()
+        # Cria Interface
+        self.ui = Ui_tela_voto()
+        # Chama o Método de "inflar" a interface na janela passando o token como parâmetro
+        self.ui.setupUi(self.janela)
+        # Passa o Token como parâmetro para a tela_voto
+        self.ui.label_2.setText(self.ui.label_2.text() + self.input.text())
+        # Exibe Janela
+        self.janela.show()
+
+
 
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
@@ -75,7 +72,7 @@ class Ui_Dialog(object):
         self.titulo = QtWidgets.QLabel(Dialog)
         self.titulo.setGeometry(QtCore.QRect(290, 30, 541, 61))
         font = QtGui.QFont()
-        font.setPointSize(20)
+        font.setPointSize(18)
         font.setBold(True)
         font.setWeight(75)
         self.titulo.setFont(font)
@@ -90,11 +87,10 @@ class Ui_Dialog(object):
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.input = QtWidgets.QLineEdit(Dialog)
-        self.input.setGeometry(QtCore.QRect(290, 300, 541, 51))
+        self.input.setGeometry(QtCore.QRect(290, 300, 541, 60))
         font = QtGui.QFont()
         font.setPointSize(40)
         self.input.setFont(font)
-        self.input.setText("")
         self.input.setMaxLength(12)
         self.input.setAlignment(QtCore.Qt.AlignmentFlag.AlignBottom|QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft)
         self.input.setObjectName("input")
@@ -104,9 +100,6 @@ class Ui_Dialog(object):
         font.setPointSize(18)
         self.btn.setFont(font)
         self.btn.setObjectName("btn")
-
-        # Ação do Botão Proximo
-        token = self.input.text()
         self.btn.clicked.connect(self.clicou)
 
         self.logo = QtWidgets.QLabel(Dialog)
@@ -124,6 +117,7 @@ class Ui_Dialog(object):
         Dialog.setWindowTitle(_translate("Dialog", "URNA CEIT"))
         self.titulo.setText(_translate("Dialog", "ELEIÇÕES GRÊMIO ESTUDANTIL CEIT - 2022"))
         self.label.setText(_translate("Dialog", "Insira seu Token de aluno:"))
+        self.input.setText(_translate("Dialog", "OdrvK3AnAM0v"))
         self.btn.setText(_translate("Dialog", "Próximo"))
 
 
