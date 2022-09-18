@@ -8,6 +8,7 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 from tela_confirmacao import Ui_tela_confirmacao
+from tela_confirmacao_2 import Ui_tela_confirmacao
 
 class Ui_tela_voto(object):
 
@@ -48,8 +49,11 @@ class Ui_tela_voto(object):
                 self.ui = Ui_tela_confirmacao()
                 # Chama o Método de "inflar" a interface
                 self.ui.setupUi(self.janela)
+                # Passa o Token como parâmetro para a tela_confirmacao
+                self.ui.lbl_usuario.setText(self.lbl_usuario.text())
+
                 # Passa o número da chapa como parâmetro para a tela_confirmacao
-                #self.ui.label_18.setText(self.ui.label_18.text()+str(chapa))
+                self.ui.lbl_chapa.setText(self.ui.lbl_chapa.text()+str(chapa))
                 # Exibe Janela
                 self.janela.show()
                 # Esconde tela_inicial
@@ -123,12 +127,12 @@ class Ui_tela_voto(object):
         self.radioButton_4.setFont(font)
         self.radioButton_4.setIconSize(QtCore.QSize(32, 32))
         self.radioButton_4.setObjectName("radioButton_4")
-        self.label_2 = QtWidgets.QLabel(tela_voto)
-        self.label_2.setGeometry(QtCore.QRect(20, 280, 221, 51))
+        self.lbl_usuario = QtWidgets.QLabel(tela_voto)
+        self.lbl_usuario.setGeometry(QtCore.QRect(20, 280, 221, 51))
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.label_2.setFont(font)
-        self.label_2.setObjectName("label_2")
+        self.lbl_usuario.setFont(font)
+        self.lbl_usuario.setObjectName("label_2")
 
         self.retranslateUi(tela_voto)
         QtCore.QMetaObject.connectSlotsByName(tela_voto)
@@ -143,7 +147,7 @@ class Ui_tela_voto(object):
         self.radioButton_2.setText(_translate("tela_voto", "Chapa 2"))
         self.radioButton_3.setText(_translate("tela_voto", "Chapa 3"))
         self.radioButton_4.setText(_translate("tela_voto", "Branco"))
-        self.label_2.setText(_translate("tela_voto", "Usuário: "))
+        self.lbl_usuario.setText(_translate("tela_voto", "Usuário: "))
 
 
 if __name__ == "__main__":

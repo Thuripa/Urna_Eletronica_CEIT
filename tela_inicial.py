@@ -54,7 +54,7 @@ class Ui_Dialog(object):
         # Chama o Método de "inflar" a interface na janela passando o token como parâmetro
         self.ui.setupUi(self.janela)
         # Passa o Token como parâmetro para a tela_voto
-        self.ui.label_2.setText(self.ui.label_2.text() + self.input.text())
+        self.ui.lbl_usuario.setText(self.ui.lbl_usuario.text() + self.input.text())
         # Exibe Janela
         self.janela.show()
         # Esconde tela_inicial
