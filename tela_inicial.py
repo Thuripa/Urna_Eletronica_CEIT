@@ -8,8 +8,61 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
+from tela_voto import Ui_tela_voto
+
+
+def valida_token(token):
+    # Atribui o arquivo txt com os tokens para a variável arquivo
+    with open("Recursos/lista_tokens.txt", "r") as arquivo:
+
+        # Linhas é uma lista[] onde cada elemento é uma linha do arquivo
+        linhas = arquivo.readlines()
+
+        # Se encontrar o token inserido pelo usuário dentro da lista de tokens retorna VERDADEIRO e fecha o arquivo
+        for linha in linhas:
+            if token == linha.strip():
+                arquivo.close()
+                return True
+
+
+def chama_tela_voto():
+    # Como que chama outra tela mesmo
+    pass
 
 class Ui_Dialog(object):
+
+    # Função que chama a tela_voto
+    def chama_tela_voto(self):
+        # Cria Janela
+        self.janela = QtWidgets.QDialog()
+        # Cria Interface
+        self.ui = Ui_tela_voto()
+        # Chama o Método de "inflar" a interface na janela passando o token como parâmetro
+        self.ui.setupUi(self.janela)
+        # Passa o Token como parâmetro para a tela_voto
+        self.ui.token = ""
+        # Exibe Janela
+        self.janela.show()
+
+    def clicou(self):
+
+        # Verifica entrada do usuário
+        if self.input.text() == "":
+            print("Insira um Token!")
+        else:
+            print("Token: ", self.input.text())
+            if valida_token(self.input.text()):
+                print("Token Válido!")
+
+                # Abre a tela_voto
+                self.chama_tela_voto()
+
+                # Esconde a janela
+                Dialog.hide()
+            else:
+                print("Token Inválido!")
+
+
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(866, 600)
@@ -17,12 +70,12 @@ class Ui_Dialog(object):
         font.setPointSize(8)
         Dialog.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:\\Users\\Guilherme\\PycharmProjects\\Urna_Eletronica_CEIT\\UI\\Logo CEIT.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("UI\\Logo CEIT.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         Dialog.setWindowIcon(icon)
         self.titulo = QtWidgets.QLabel(Dialog)
         self.titulo.setGeometry(QtCore.QRect(290, 30, 541, 61))
         font = QtGui.QFont()
-        font.setPointSize(18)
+        font.setPointSize(20)
         font.setBold(True)
         font.setWeight(75)
         self.titulo.setFont(font)
@@ -51,10 +104,15 @@ class Ui_Dialog(object):
         font.setPointSize(18)
         self.btn.setFont(font)
         self.btn.setObjectName("btn")
+
+        # Ação do Botão Proximo
+        token = self.input.text()
+        self.btn.clicked.connect(self.clicou)
+
         self.logo = QtWidgets.QLabel(Dialog)
         self.logo.setGeometry(QtCore.QRect(10, 0, 230, 230))
         self.logo.setText("")
-        self.logo.setPixmap(QtGui.QPixmap("C:\\Users\\Guilherme\\PycharmProjects\\Urna_Eletronica_CEIT\\UI\\Logo CEIT.png"))
+        self.logo.setPixmap(QtGui.QPixmap("UI\\Logo CEIT.png"))
         self.logo.setScaledContents(True)
         self.logo.setObjectName("logo")
 

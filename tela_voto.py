@@ -8,21 +8,25 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
-
 class Ui_tela_voto(object):
+
+    def clicou(self, token):
+        print("Token: ", token)
+
     def setupUi(self, tela_voto):
+
         tela_voto.setObjectName("tela_voto")
         tela_voto.resize(866, 600)
         font = QtGui.QFont()
         font.setPointSize(8)
         tela_voto.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:\\Users\\Guilherme\\PycharmProjects\\Urna_Eletronica_CEIT\\UI\\Logo CEIT.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("UI\\Logo CEIT.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         tela_voto.setWindowIcon(icon)
         self.titulo = QtWidgets.QLabel(tela_voto)
         self.titulo.setGeometry(QtCore.QRect(290, 30, 541, 61))
         font = QtGui.QFont()
-        font.setPointSize(18)
+        font.setPointSize(20)
         font.setBold(True)
         font.setWeight(75)
         self.titulo.setFont(font)
@@ -38,6 +42,12 @@ class Ui_tela_voto(object):
         self.label.setObjectName("label")
         self.btn = QtWidgets.QPushButton(tela_voto)
         self.btn.setGeometry(QtCore.QRect(290, 500, 231, 71))
+
+        # Ação do Botão
+
+        self.token = ""
+        self.btn.clicked.connect(self.clicou, self.token)
+
         font = QtGui.QFont()
         font.setPointSize(18)
         self.btn.setFont(font)
@@ -45,7 +55,7 @@ class Ui_tela_voto(object):
         self.logo = QtWidgets.QLabel(tela_voto)
         self.logo.setGeometry(QtCore.QRect(10, 0, 230, 230))
         self.logo.setText("")
-        self.logo.setPixmap(QtGui.QPixmap("C:\\Users\\Guilherme\\PycharmProjects\\Urna_Eletronica_CEIT\\UI\\Logo CEIT.png"))
+        self.logo.setPixmap(QtGui.QPixmap("UI\\Logo CEIT.png"))
         self.logo.setScaledContents(True)
         self.logo.setObjectName("logo")
         self.radioButton_1 = QtWidgets.QRadioButton(tela_voto)
