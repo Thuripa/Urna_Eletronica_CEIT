@@ -38,7 +38,7 @@ class Ui_Dialog(object):
                 print("Token Válido!")
 
                 # Abre a tela_voto
-                chama_tela_voto()
+                self.chama_tela_voto()
 
                 # Esconde a janela
 
