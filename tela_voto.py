@@ -8,7 +8,6 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 from tela_confirmacao import Ui_tela_confirmacao
-from tela_confirmacao_2 import Ui_tela_confirmacao
 
 class Ui_tela_voto(object):
 
