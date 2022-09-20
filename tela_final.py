@@ -8,18 +8,28 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
+class Ui_tela_final(object):
 
-class Ui_Dialog(object):
-    def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(866, 600)
+    def finalizar(self):
+
+        self.tela_final.close()
+        self.tela_inicial.show()
+
+    def clicou(self):
+        self.finalizar()
+
+    def setupUi(self, tela_final, tela_inicial):
+        self.tela_final = tela_final
+        self.tela_inicial = tela_inicial
+        tela_final.setObjectName("Dialog")
+        tela_final.resize(866, 600)
         font = QtGui.QFont()
         font.setPointSize(8)
-        Dialog.setFont(font)
+        tela_final.setFont(font)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("UI\\Logo CEIT.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        Dialog.setWindowIcon(icon)
-        self.titulo = QtWidgets.QLabel(Dialog)
+        tela_final.setWindowIcon(icon)
+        self.titulo = QtWidgets.QLabel(tela_final)
         self.titulo.setGeometry(QtCore.QRect(290, 30, 541, 61))
         font = QtGui.QFont()
         font.setPointSize(18)
@@ -27,7 +37,7 @@ class Ui_Dialog(object):
         font.setWeight(75)
         self.titulo.setFont(font)
         self.titulo.setObjectName("titulo")
-        self.label = QtWidgets.QLabel(Dialog)
+        self.label = QtWidgets.QLabel(tela_final)
         self.label.setGeometry(QtCore.QRect(290, 220, 541, 61))
         font = QtGui.QFont()
         font.setPointSize(20)
@@ -36,27 +46,28 @@ class Ui_Dialog(object):
         font.setWeight(50)
         self.label.setFont(font)
         self.label.setObjectName("label")
-        self.btn = QtWidgets.QPushButton(Dialog)
+        self.btn = QtWidgets.QPushButton(tela_final)
         self.btn.setGeometry(QtCore.QRect(290, 390, 231, 71))
         font = QtGui.QFont()
         font.setPointSize(18)
         self.btn.setFont(font)
         self.btn.setObjectName("btn")
-        self.logo = QtWidgets.QLabel(Dialog)
+        self.btn.clicked.connect(self.clicou)
+        self.logo = QtWidgets.QLabel(tela_final)
         self.logo.setGeometry(QtCore.QRect(10, 0, 230, 230))
         self.logo.setText("")
         self.logo.setPixmap(QtGui.QPixmap("UI\\Logo CEIT.png"))
         self.logo.setScaledContents(True)
         self.logo.setObjectName("logo")
-        self.label_2 = QtWidgets.QLabel(Dialog)
+        self.label_2 = QtWidgets.QLabel(tela_final)
         self.label_2.setGeometry(QtCore.QRect(290, 320, 371, 41))
         font = QtGui.QFont()
         font.setPointSize(18)
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
 
-        self.retranslateUi(Dialog)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
+        self.retranslateUi(tela_final)
+        QtCore.QMetaObject.connectSlotsByName(tela_final)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
@@ -71,7 +82,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
+    ui = Ui_tela_final()
     ui.setupUi(Dialog)
     Dialog.show()
     sys.exit(app.exec())

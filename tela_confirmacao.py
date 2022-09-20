@@ -7,6 +7,7 @@
 
 import pandas as pd
 from PyQt6 import QtCore, QtGui, QtWidgets
+from tela_final import Ui_tela_final
 
 
 class Ui_tela_confirmacao(object):
@@ -46,11 +47,22 @@ class Ui_tela_confirmacao(object):
     # Registra Voto em um arquivo e soma o total de votos
     def acao_btn_votar(self):
 
-        pass
+        # Fecha a tela_voto
+        self.tela_voto.close()
+
+        # Chama Tela Final
+        self.tela_final = QtWidgets.QDialog()
+        self.ui = Ui_tela_final()
+        self.ui.setupUi(self.tela_final, self.tela_inicial)
+        self.tela_final.show()
+        self.tela_confirmacao.close()
 
 
-    def setupUi(self, tela_confirmacao):
+    def setupUi(self, tela_voto, tela_confirmacao, tela_inicial):
 
+        self.tela_voto = tela_voto
+        self.tela_confirmacao = tela_confirmacao
+        self.tela_inicial = tela_inicial
 
         larguraLabel = 550
 

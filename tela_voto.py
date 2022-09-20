@@ -8,6 +8,7 @@
 import time
 from PyQt6 import QtCore, QtGui, QtWidgets
 from tela_confirmacao import Ui_tela_confirmacao
+from tela_final import Ui_tela_final
 
 class Ui_tela_voto(object):
 
@@ -35,9 +36,19 @@ class Ui_tela_voto(object):
         if chapa == -1:
             print("Escolha uma opção!")
         else:
+
+            # Registra Voto em Branco
             if chapa == 0:
 
                 print("Escolheu Votar em Branco")
+
+                # Chama Tela Final
+                self.tela_final = QtWidgets.QDialog()
+                self.ui = Ui_tela_final()
+                self.ui.setupUi(self.tela_final, self.tela_inicial)
+                self.tela_final.show()
+                self.tela_voto.close()
+
 
             # Chama tela_confirmacao
             else:
@@ -47,7 +58,7 @@ class Ui_tela_voto(object):
                 # Cria Interface
                 self.ui = Ui_tela_confirmacao()
                 # Chama o Método de "inflar" a interface
-                self.ui.setupUi(self.tela_confirmacao)
+                self.ui.setupUi(self.tela_voto, self.tela_confirmacao, self.tela_inicial)
 
                 # Passa o Token como parâmetro para a tela_confirmacao
 
@@ -67,18 +78,14 @@ class Ui_tela_voto(object):
                 # Exibe Janela
                 self.tela_confirmacao.show()
 
-                # Espera a janela Carregar
-                #print("iniciou a espera")
-                #time.sleep(5)
-                #print("finalizou a espera")
-                # Se usuário escolher cancelar o voto
-                #self.janela.close()
-                time.sleep(10)
-                print("Ainda estou aqui")
 
 
 
-    def setupUi(self, tela_voto):
+    def setupUi(self, tela_voto, tela_inicial):
+
+        self.tela_voto = tela_voto
+        self.tela_inicial = tela_inicial
+
         tela_voto.setObjectName("tela_voto")
         tela_voto.resize(866, 600)
         font = QtGui.QFont()
