@@ -38,11 +38,6 @@ class Ui_tela_confirmacao(object):
         self.lbl_usuario.setText("Usuário: "+token)
         self.lbl_chapa.setText("Chapa:  "+str(num_voto))
 
-    # Volta para tela_voto
-    def acao_btn_cancelar(self, janela):
-        # Fecha a janela
-
-        pass
 
     # Registra Voto em um arquivo e soma o total de votos
     def acao_btn_votar(self):
