@@ -6,7 +6,7 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 
 
 def hash_senha():
-    #Gera a senha de criptografia baseado em SHA256
+    # Gera a senha de criptografia baseado em SHA256
     password = input('Senha: ').encode()
     kdf = PBKDF2HMAC(
         algorithm=hashes.SHA256(),
@@ -20,7 +20,7 @@ def hash_senha():
 
 
 def criptografar(password):
-    #Criptografa cada arquivo do diretório definido (neste caso o Recursos que possuí informações 'sensiveis')
+    # Criptografa cada arquivo do diretório definido (neste caso o Recursos que possuí informações 'sensiveis')
     for file in os.listdir('Recursos'):
         with open(f'Recursos\\{file}', 'rb') as arquivo:
             descripto = arquivo.read()
@@ -32,7 +32,7 @@ def criptografar(password):
 
 
 def descriptografar(password):
-    #Descriptografa os arquivos da pasta Recursos
+    # Descriptografa os arquivos da pasta Recursos
     for file in os.listdir('Recursos'):
         with open(f'Recursos\\{file}', 'rb') as arquivo:
             criptografado = arquivo.read()

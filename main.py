@@ -1,45 +1,12 @@
 # Projeto Urna CEIT
-import sys
 
-from PyQt6.QtWidgets import QApplication, QWidget, QPushButton
-from PyQt6 import uic
+import tela_inicial
+from PyQt6 import QtWidgets, QtCore, QtGui
 
-
-# Função Que busca o Token na Lista
-def valida_token():
-    # Atribui o arquivo txt com os tokens para a variável arquivo
-    with open("Recursos/lista_tokens.txt", "r") as arquivo:
-
-        # Linhas é uma lista[] onde cada elemento é uma linha do arquivo
-        linhas = arquivo.readlines()
-
-        # Se encontrar o token inserido pelo usuário dentro da lista de tokens retorna VERDADEIRO e fecha o arquivo
-        for linha in linhas:
-            if usuario == linha.strip():
-                arquivo.close()
-                return True
-
-
-        # Se não encontrar o token retorna FALSO e fecha o arquivo
-        arquivo.close()
-        return False
-
+from tela_inicial import Ui_tela_inicial
 
 #
 # INICIO
 #
-# Carrega Interface
-#uic.loadUi('tela_inicial.ui')
 
-#app = QApplication(sys.argv)
-
-#app.show()
-
-# Entrada do usuário (No caso seria o texto de um objeto da UI)
-usuario = input("Insira seu Token de Aluno: ")
-
-
-if valida_token():
-    print("Usuário Encontrado!")
-else:
-    print("Usuário Inexistente!")
+# Definir aqui uma função de verificação da encriptação da pasta Recursos e chamada da tela_inicial

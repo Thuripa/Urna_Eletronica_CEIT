@@ -9,7 +9,7 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 class cypher_helper():
 
     # Retorna Chave
-    def get_chave(self):
+    def get_chave():
         #Gera a senha de criptografia baseado em SHA256
         password = input('Senha: ').encode()
         kdf = PBKDF2HMAC(

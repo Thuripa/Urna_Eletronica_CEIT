@@ -8,7 +8,7 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
-import cypher_helper
+import criptografar_arquivo
 from tela_voto import Ui_tela_voto
 from alerta_bloqueio import Ui_alerta_bloqueio
 
@@ -31,6 +31,11 @@ class Ui_tela_inicial(object):
 
     # Função que implementa a ação de clicar no botão
     def clicou(self):
+
+        # Pega Chave
+        chave = criptografar_arquivo.hash_senha()
+        # Descriptografa a pasta Recursos
+        criptografar_arquivo.descriptografar(chave)
 
         # Se o alerta já tiver sido gerado e a senha já tiver sido inserida corretamente
         if self.tentativas == 99 and self.ui_alerta_bloqueio.bloqueado == False:
@@ -114,17 +119,12 @@ class Ui_tela_inicial(object):
         # Restaura label
         self.label.setText("Insira seu Token de aluno:")
 
+    def closeEvent(self, event):
+        pass
+
     def setupUi(self, tela_inicial):
 
         self.tela_inicial = tela_inicial
-
-
-        ########### BUG #############
-        helper = cypher_helper.cypher_helper
-        # Pega Chave
-        chave = helper.get_chave(helper)
-        # Descriptografa a pasta Recursos
-        helper.descriptografar_pasta(chave)
 
         # Variável para contar tentativas
         self.tentativas = 0
