@@ -8,6 +8,7 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
+import cypher_helper
 from tela_voto import Ui_tela_voto
 from alerta_bloqueio import Ui_alerta_bloqueio
 
@@ -116,6 +117,14 @@ class Ui_tela_inicial(object):
     def setupUi(self, tela_inicial):
 
         self.tela_inicial = tela_inicial
+
+
+        ########### BUG #############
+        helper = cypher_helper.cypher_helper
+        # Pega Chave
+        chave = helper.get_chave(helper)
+        # Descriptografa a pasta Recursos
+        helper.descriptografar_pasta(chave)
 
         # Variável para contar tentativas
         self.tentativas = 0
