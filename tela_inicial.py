@@ -8,26 +8,26 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
-import cypher_helper
 from tela_voto import Ui_tela_voto
 from alerta_bloqueio import Ui_alerta_bloqueio
 
-#
-def valida_token(token):
-    # Atribui o arquivo txt com os tokens para a variável arquivo
-    with open("Recursos/lista_tokens.txt", "r") as arquivo:
 
-        # Linhas é uma lista[] onde cada elemento é uma linha do arquivo
-        linhas = arquivo.readlines()
-
-        # Se encontrar o token inserido pelo usuário dentro da lista de tokens retorna VERDADEIRO e fecha o arquivo
-        for linha in linhas:
-            if token == linha.strip():
-                arquivo.close()
-                return True
-
-#
+# CLASSE tela_inicial
 class Ui_tela_inicial(object):
+
+    # VALIDA TOKEN
+    def valida_token(self, token):
+        # Atribui o arquivo txt com os tokens para a variável arquivo
+        with open("Recursos/lista_tokens.txt", "r") as arquivo:
+
+            # Linhas é uma lista[] onde cada elemento é uma linha do arquivo
+            linhas = arquivo.readlines()
+
+            # Se encontrar o token inserido pelo usuário dentro da lista de tokens retorna VERDADEIRO e fecha o arquivo
+            for linha in linhas:
+                if token == linha.strip():
+                    arquivo.close()
+                    return True
 
     # Função que implementa a ação de clicar no botão
     def clicou(self):
@@ -50,7 +50,7 @@ class Ui_tela_inicial(object):
             self.label.setText("Insira um Token!")
         else:
             print("Token: ", self.input.text())
-            if valida_token(self.input.text()):
+            if self.valida_token(self.input.text()):
                 print("Token Válido!")
 
                 # Abre a tela_voto
@@ -117,14 +117,6 @@ class Ui_tela_inicial(object):
     def setupUi(self, tela_inicial):
 
         self.tela_inicial = tela_inicial
-
-
-        ########### BUG #############
-        helper = cypher_helper.cypher_helper
-        # Pega Chave
-        chave = helper.get_chave(helper)
-        # Descriptografa a pasta Recursos
-        helper.descriptografar_pasta(chave)
 
         # Variável para contar tentativas
         self.tentativas = 0
