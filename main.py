@@ -1,12 +1,23 @@
 # Projeto Urna CEIT
+import sys
 
 import tela_inicial
-from PyQt6 import QtWidgets, QtCore, QtGui
-
-from tela_inicial import Ui_tela_inicial
+from PyQt6.QtWidgets import QApplication, QWidget, QPushButton
+from PyQt6 import uic, QtWidgets
 
 #
 # INICIO
 #
+# Carrega Interface
 
-# Definir aqui uma função de verificação da encriptação da pasta Recursos e chamada da tela_inicial
+# Cria Janela
+tela_inicial = QtWidgets.QDialog()
+
+# Cria inter
+ui_tela_inicial = tela_inicial.Ui_tela_inicial()
+
+# Chama o Método de "inflar" a interface
+ui_tela_inicial.setupUi(tela_inicial)
+
+# Exibe Janela
+tela_inicial.show()

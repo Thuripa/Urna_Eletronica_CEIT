@@ -8,34 +8,44 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
-import criptografar_arquivo
 from tela_voto import Ui_tela_voto
 from alerta_bloqueio import Ui_alerta_bloqueio
+import criptografar_arquivo
 
-#
-def valida_token(token):
-    # Atribui o arquivo txt com os tokens para a variável arquivo
-    with open("Recursos/lista_tokens.txt", "r") as arquivo:
 
-        # Linhas é uma lista[] onde cada elemento é uma linha do arquivo
-        linhas = arquivo.readlines()
-
-        # Se encontrar o token inserido pelo usuário dentro da lista de tokens retorna VERDADEIRO e fecha o arquivo
-        for linha in linhas:
-            if token == linha.strip():
-                arquivo.close()
-                return True
-
-#
+# CLASSE tela_inicial
 class Ui_tela_inicial(object):
+
+
+
+    # VALIDA TOKEN
+    def valida_token(self, token):
+        # Atribui o arquivo txt com os tokens para a variável arquivo
+        with open("Recursos/lista_tokens.txt", "r") as arquivo:
+
+            # Linhas é uma lista[] onde cada elemento é uma linha do arquivo
+            linhas = arquivo.readlines()
+
+            # Se a primeira linha for um Token válido então a lista_tokens está descriptografada
+            if linhas[0].strip() == "ZTYyA5zKLtKq":
+                print("Arquivo lista_tokens em texto limpo")
+                # Se encontrar o token inserido pelo usuário dentro da lista de tokens retorna VERDADEIRO e fecha o arquivo
+                for linha in linhas:
+                    if token == linha.strip():
+                        arquivo.close()
+                        # Criptografa o arquivo de volta
+                        #self.criptografar_arquivo.criptografar_arquivo(self.chave, "lista_tokens.txt")
+                        return True
+
+            # Senão, descriptografa os arquivos da pasta
+            else:
+                print("Arquivo lista_tokens criptografado")
+                #self.criptografar_arquivo.descriptografar_pasta(self.chave)
+
+
 
     # Função que implementa a ação de clicar no botão
     def clicou(self):
-
-        # Pega Chave
-        chave = criptografar_arquivo.hash_senha()
-        # Descriptografa a pasta Recursos
-        criptografar_arquivo.descriptografar(chave)
 
         # Se o alerta já tiver sido gerado e a senha já tiver sido inserida corretamente
         if self.tentativas == 99 and self.ui_alerta_bloqueio.bloqueado == False:
@@ -55,7 +65,9 @@ class Ui_tela_inicial(object):
             self.label.setText("Insira um Token!")
         else:
             print("Token: ", self.input.text())
-            if valida_token(self.input.text()):
+
+            # Chama função de validação do Token
+            if self.valida_token(self.input.text()):
                 print("Token Válido!")
 
                 # Abre a tela_voto
@@ -98,6 +110,7 @@ class Ui_tela_inicial(object):
         # Exibe Janela
         self.alerta_bloqueio.show()
 
+
         if not self.ui_alerta_bloqueio.bloqueado:
             # Zera as Tentativas
             print("Zerou Tentativas")
@@ -119,15 +132,18 @@ class Ui_tela_inicial(object):
         # Restaura label
         self.label.setText("Insira seu Token de aluno:")
 
-    def closeEvent(self, event):
-        pass
-
     def setupUi(self, tela_inicial):
-
-        self.tela_inicial = tela_inicial
 
         # Variável para contar tentativas
         self.tentativas = 0
+
+        # Cria a classe criptografar_arquivo
+        self.criptografar_arquivo = criptografar_arquivo
+
+        self.chave = self.criptografar_arquivo.hash_senha()
+
+        # Cria a tela_inicial
+        self.tela_inicial = tela_inicial
 
         tela_inicial.setObjectName("Dialog")
         tela_inicial.resize(866, 600)
