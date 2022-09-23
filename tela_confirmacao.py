@@ -38,7 +38,6 @@ class Ui_tela_confirmacao(object):
         self.lbl_usuario.setText("Usuário: "+token)
         self.lbl_chapa.setText("Chapa:  "+str(num_voto))
 
-
     # Registra Voto em um arquivo e soma o total de votos
     def acao_btn_votar(self):
 
@@ -48,13 +47,12 @@ class Ui_tela_confirmacao(object):
 
         chapa = self.lbl_chapa.text()[-1]
 
-        # Registra Voto num arquivo
         with open("Recursos/lista_votos.txt", "a") as arquivo:
-
-            # Linhas é uma lista[] onde cada elemento é uma linha do arquivo
-            arquivo.write(chapa+token+"\n")
+            # Escreve no arquivo o número da chapa e o token
+            arquivo.write(chapa + token + "\n")
 
             arquivo.close()
+
 
         # Fecha a tela_voto
         self.tela_voto.close()

@@ -33,8 +33,6 @@ class Ui_tela_inicial(object):
                 for linha in linhas:
                     if token == linha.strip():
                         arquivo.close()
-                        # Criptografa o arquivo de volta
-                        #self.criptografar_arquivo.criptografar_arquivo(self.chave, "lista_tokens.txt")
                         return True
 
             # Senão, descriptografa os arquivos da pasta
@@ -42,7 +40,22 @@ class Ui_tela_inicial(object):
                 print("Arquivo lista_tokens criptografado")
                 #self.criptografar_arquivo.descriptografar_pasta(self.chave)
 
+    # Busca o Token no registro de votos para saber se já foi usado, retorna TRUE se já foi usado
+    def busca_token(self, token):
+        with open("Recursos/lista_votos.txt", "r") as arquivo:
 
+            linhas = arquivo.readlines()
+
+            for linha in linhas:
+                print(linha[-13:].strip())
+                # Se encontrar o Token na lista escreve "- Votou" do lado
+                if token.strip() == linha[-13:].strip():
+                    print("Encontrou o Token")
+                    arquivo.close()
+                    return True
+
+            arquivo.close()
+            return False
 
     # Função que implementa a ação de clicar no botão
     def clicou(self):
@@ -70,11 +83,15 @@ class Ui_tela_inicial(object):
             if self.valida_token(self.input.text()):
                 print("Token Válido!")
 
-                # Abre a tela_voto
-                self.chama_tela_voto()
+                if not self.busca_token(self.input.text()):
+                    # Abre a tela_voto
+                    self.chama_tela_voto()
 
-                # Esconde a tela atual
-                tela_inicial.hide()
+                    # Esconde a tela atual
+                    tela_inicial.hide()
+                else:
+                    self.label.setText("Token já utilizado!")
+
             else:
                 print("Token Inválido!")
                 self.label.setText("Token Inválido! "+str(self.tentativas+1)+" de 3 Tentativas...")
@@ -201,7 +218,7 @@ class Ui_tela_inicial(object):
         Dialog.setWindowTitle(_translate("Dialog", "URNA CEIT"))
         self.titulo.setText(_translate("Dialog", "ELEIÇÕES GRÊMIO ESTUDANTIL CEIT - 2022"))
         self.label.setText(_translate("Dialog", "Insira seu Token de aluno:"))
-        self.input.setText(_translate("Dialog", "OdrvK3AnAM0v"))
+        self.input.setText(_translate("Dialog", "gmqX6ToZyDv5"))
         self.btn.setText(_translate("Dialog", "Próximo"))
 
 
