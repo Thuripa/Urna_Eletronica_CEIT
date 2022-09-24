@@ -38,7 +38,6 @@ class Ui_tela_resultados(object):
 
                 # Pega número da chapa
                 num_voto = int(linha[0])
-                print("Número do Voto: ", num_voto)
 
                 # Adiciona os votos na lista
                 if num_voto == 0:

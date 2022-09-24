@@ -1,1 +1,1 @@
-C:\Users\Guilherme\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\Scripts\pyinstaller C:\Users\Guilherme\PycharmProjects\Urna_Eletronica_CEIT\tela_inicial.py --onefile
+C:\Users\Guilherme\PycharmProjects\Urna_Eletronica_CEIT\venv\Scripts C:\Users\Guilherme\PycharmProjects\Urna_Eletronica_CEIT\tela_inicial.py --onefile -w
