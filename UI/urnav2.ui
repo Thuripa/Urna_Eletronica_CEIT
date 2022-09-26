@@ -163,7 +163,7 @@
       <property name="geometry">
        <rect>
         <x>160</x>
-        <y>160</y>
+        <y>200</y>
         <width>541</width>
         <height>61</height>
        </rect>
@@ -186,7 +186,7 @@
       <property name="geometry">
        <rect>
         <x>160</x>
-        <y>240</y>
+        <y>320</y>
         <width>541</width>
         <height>60</height>
        </rect>
@@ -228,11 +228,11 @@ QLineEdit:focus {
        <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_1">
+     <widget class="QPushButton" name="btn_login">
       <property name="geometry">
        <rect>
         <x>160</x>
-        <y>330</y>
+        <y>400</y>
         <width>231</width>
         <height>71</height>
        </rect>
@@ -282,7 +282,7 @@ QPushButton:hover {
        <string>Escolha a chapa em que deseja votar:</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_2">
+     <widget class="QPushButton" name="btn_chapa">
       <property name="geometry">
        <rect>
         <x>110</x>
@@ -777,7 +777,83 @@ QPushButton:hover {
      </widget>
     </widget>
     <widget class="QWidget" name="tela4">
-     <widget class="QPushButton" name="btn_5">
+     <widget class="QPushButton" name="btn_finalizar">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>330</y>
+        <width>231</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	background-color: rgb(0, 74, 173);
+	color: rgb(255, 255, 255);
+	border-radius: 10px;
+}
+
+QPushButton:hover {
+	background-color: rgb(25, 92, 181);
+}</string>
+      </property>
+      <property name="text">
+       <string>Finalizar</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_33">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>160</y>
+        <width>541</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 74, 173);</string>
+      </property>
+      <property name="text">
+       <string>SEU VOTO FOI REGISTRADO COM SUCESSO!</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_34">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>260</y>
+        <width>371</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 74, 173);</string>
+      </property>
+      <property name="text">
+       <string>Clique em Finalizar.</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tela5">
+     <widget class="QPushButton" name="btn_fechar_resultados">
       <property name="geometry">
        <rect>
         <x>100</x>
@@ -857,7 +933,7 @@ QPushButton:hover {
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1111</width>
+      <width>1920</width>
       <height>41</height>
      </rect>
     </property>
@@ -907,7 +983,7 @@ QPushButton:hover {
     <widget class="QLabel" name="titulo">
      <property name="geometry">
       <rect>
-       <x>620</x>
+       <x>840</x>
        <y>-10</y>
        <width>541</width>
        <height>61</height>
@@ -930,10 +1006,10 @@ QPushButton:hover {
    <widget class="QLabel" name="logo">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>220</y>
-      <width>211</width>
-      <height>211</height>
+      <x>45</x>
+      <y>225</y>
+      <width>320</width>
+      <height>320</height>
      </rect>
     </property>
     <property name="text">
@@ -945,7 +1021,6 @@ QPushButton:hover {
     <property name="scaledContents">
      <bool>true</bool>
     </property>
-   </widget>
   </widget>
  </widget>
  <resources/>

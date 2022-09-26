@@ -102,7 +102,7 @@ class Ui_tela_inicial(object):
                 self.tentativas += 1
                 print("Tentativas: ", self.tentativas)
 
-# Exibe Tela Resultados
+    # Exibe Tela Resultados
     def chama_tela_resultados(self):
         # Cria Janela
         self.tela_resultados = QtWidgets.QDialog()
