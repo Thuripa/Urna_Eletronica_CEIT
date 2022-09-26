@@ -15,28 +15,33 @@ class Ui_tela_confirmacao(object):
     # Preenche a tela de acordo com a chapa escolhida
     def preenche_tela(self, token,num_voto):
 
-        # Leitura da tabela da chapa
-        alunos_chapa = pd.read_excel('Recursos\\alunos_chapa.xlsx', engine='openpyxl', sheet_name=(num_voto-1))
+        # Se o voto não for branco carrega os nomes da tabela
+        if not num_voto == 0:
+            # Leitura da tabela alunos_chapa
+            alunos_chapa = pd.read_excel('Recursos\\alunos_chapa.xlsx', engine='openpyxl', sheet_name=(num_voto - 1))
 
-        self.titulo.setText("ELEIÇÕES GRÊMIO ESTUDANTIL CEIT - 2022")
-        self.label.setText("Deseja Confirmar Seu Voto?")
-        self.btn_cancelar.setText("Cancelar")
-        self.btn_votar.setText("Votar")
-        self.lbl_presidente.setText(f"Presidente: {alunos_chapa.iloc[0, 0]}")
-        self.lbl_sec_geral.setText(f"Secretário Geral: {alunos_chapa.iloc[2, 0]}")
-        self.lbl_1_sec.setText(f"1º Secretário: {alunos_chapa.iloc[3, 0]}")
-        self.lbl_tes_geral.setText(f"Tesoureiro Geral: {alunos_chapa.iloc[4, 0]}")
-        self.lbl_1_tes.setText(f"1º Tesoureiro: {alunos_chapa.iloc[5, 0]}")
-        self.lbl_dir_pedagogico.setText(f"Diretor Pedagógico:{alunos_chapa.iloc[6, 0]}")
-        self.lbl_dir_cultura.setText(f"Diretor de Cultura: {alunos_chapa.iloc[7, 0]}")
-        self.lbl_vice_pres.setText(f"Vice-Presidente: {alunos_chapa.iloc[1, 0]}")
-        self.lbl_dir_social.setText(f"Diretor Social: {alunos_chapa.iloc[9, 0]}")
-        self.lbl_dir_imprensa.setText(f"Diretor de Imprensa: {alunos_chapa.iloc[8, 0]}")
-        self.lbl_2_suplente.setText(f"2º Suplente: {alunos_chapa.iloc[12, 0]}")
-        self.lbl_1_suplente.setText(f"1º Suplente: {alunos_chapa.iloc[11, 0]}")
-        self.lbl_dir_esporte.setText(f"Diretor de Esporte: {alunos_chapa.iloc[10, 0]}")
-        self.lbl_usuario.setText("Usuário: "+token)
-        self.lbl_chapa.setText("Chapa:  "+str(num_voto))
+            self.titulo.setText("ELEIÇÕES GRÊMIO ESTUDANTIL CEIT - 2022")
+            self.label.setText("Deseja Confirmar Seu Voto?")
+            self.btn_cancelar.setText("Cancelar")
+            self.btn_votar.setText("Votar")
+            self.lbl_presidente.setText(f"Presidente: {alunos_chapa.iloc[0, 0]}")
+            self.lbl_sec_geral.setText(f"Secretário Geral: {alunos_chapa.iloc[2, 0]}")
+            self.lbl_1_sec.setText(f"1º Secretário: {alunos_chapa.iloc[3, 0]}")
+            self.lbl_tes_geral.setText(f"Tesoureiro Geral: {alunos_chapa.iloc[4, 0]}")
+            self.lbl_1_tes.setText(f"1º Tesoureiro: {alunos_chapa.iloc[5, 0]}")
+            self.lbl_dir_pedagogico.setText(f"Diretor Pedagógico:{alunos_chapa.iloc[6, 0]}")
+            self.lbl_dir_cultura.setText(f"Diretor de Cultura: {alunos_chapa.iloc[7, 0]}")
+            self.lbl_vice_pres.setText(f"Vice-Presidente: {alunos_chapa.iloc[1, 0]}")
+            self.lbl_dir_social.setText(f"Diretor Social: {alunos_chapa.iloc[9, 0]}")
+            self.lbl_dir_imprensa.setText(f"Diretor de Imprensa: {alunos_chapa.iloc[8, 0]}")
+            self.lbl_2_suplente.setText(f"2º Suplente: {alunos_chapa.iloc[12, 0]}")
+            self.lbl_1_suplente.setText(f"1º Suplente: {alunos_chapa.iloc[11, 0]}")
+            self.lbl_dir_esporte.setText(f"Diretor de Esporte: {alunos_chapa.iloc[10, 0]}")
+            self.lbl_usuario.setText("Usuário: " + token)
+            self.lbl_chapa.setText("Chapa:  " + str(num_voto))
+        else:
+            # Não preenche nada...
+            pass
 
 
     # Registra Voto em um arquivo e soma o total de votos
@@ -48,13 +53,12 @@ class Ui_tela_confirmacao(object):
 
         chapa = self.lbl_chapa.text()[-1]
 
-        # Registra Voto num arquivo
         with open("Recursos/lista_votos.txt", "a") as arquivo:
-
-            # Linhas é uma lista[] onde cada elemento é uma linha do arquivo
-            arquivo.write(chapa+token+"\n")
+            # Escreve no arquivo o número da chapa e o token
+            arquivo.write(chapa + token + "\n")
 
             arquivo.close()
+
 
         # Fecha a tela_voto
         self.tela_voto.close()
