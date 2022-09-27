@@ -261,7 +261,21 @@ class MainWindow(QMainWindow):
 
         else:
             # Não preenche nada...
-            pass
+            # Ah... agora preenche sim :p
+            alunos = 'VOTO EM BRANCO'
+            self.label_presidente.setText(f"Presidente: {alunos}")
+            self.label_sec_geral.setText(f"Secretário Geral: {alunos}")
+            self.label_1_sec.setText(f"1º Secretário: {alunos}")
+            self.label_tes_geral.setText(f"Tesoureiro Geral: {alunos}")
+            self.label_1_tes.setText(f"1º Tesoureiro: {alunos}")
+            self.label_dir_pedagogico.setText(f"Diretor Pedagógico:{alunos}")
+            self.label_dir_cultura.setText(f"Diretor de Cultura: {alunos}")
+            self.label_vice_presidente.setText(f"Vice-Presidente: {alunos}")
+            self.label_dir_social.setText(f"Diretor Social: {alunos}")
+            self.label_dir_imprensa.setText(f"Diretor de Imprensa: {alunos}")
+            self.label_2_suplente.setText(f"2º Suplente: {alunos}")
+            self.label_1_suplente.setText(f"1º Suplente: {alunos}")
+            self.label_dir_esporte.setText(f"Diretor de Esporte: {alunos}")
 
     # Registra os Votos no arquivo
     def registra_voto(self, num_voto):
@@ -310,6 +324,7 @@ class MainWindow(QMainWindow):
         # Restaura janela
         self.input.setText("")
         self.label.setText("Insira seu Token de aluno: ")
+        self.usuario.setText('Usuário: ')
         self.stackedWidget.setCurrentIndex(0)
 
     # Construtor Janela
@@ -328,7 +343,6 @@ class MainWindow(QMainWindow):
 
         # Se usuário clicar em 'finalizar' na tela resultados
         self.btn_finalizar_resultados.clicked.connect(self.finalizar)
-
 
         # Variável para contar tentativas
         self.tentativas = 0
