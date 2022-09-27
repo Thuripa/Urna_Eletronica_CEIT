@@ -72,6 +72,7 @@ class MainWindow(QMainWindow):
 
             # Chama função de validação do Token
             if self.valida_token(self.input.text()):
+
                 print("Token Válido!")
 
                 # Se o Token for a senha do admin (boas práticas de segurança foi pro espaço rs)
@@ -191,6 +192,22 @@ class MainWindow(QMainWindow):
 
         self.chama_tela_confirmacao(chapa)
 
+    def get_chapa(self):
+
+        chapa = -1
+
+        # Confere qual opção foi escolhida
+        if self.rb_chapa1.isChecked():
+            chapa = 1
+        elif self.rb_chapa2.isChecked():
+            chapa = 2
+        elif self.rb_chapa3.isChecked():
+            chapa = 3
+        elif self.rb_branco.isChecked():
+            chapa = 0
+
+        return chapa
+
 
     def chama_tela_confirmacao(self, chapa):
 
@@ -248,8 +265,11 @@ class MainWindow(QMainWindow):
         token = self.input.text()
 
         with open("Recursos/lista_votos.txt", "a") as arquivo:
+
+            print("Registra voto do Token:", token, "para a chapa: ", str(num_voto))
+
             # Escreve no arquivo o número da chapa e o token
-            arquivo.write(str(num_voto) + token + "\n")
+            arquivo.write(str(num_voto) + " " + token + "\n")
 
             arquivo.close()
 
@@ -258,7 +278,9 @@ class MainWindow(QMainWindow):
 
     # Registra voto
     def votar(self):
-        pass
+
+        # Invonca método registra voto passando a chapa como argumento
+        self.registra_voto(self.get_chapa())
 
     # Bloqueia tela
     def chama_alerta_bloqueio(self):
