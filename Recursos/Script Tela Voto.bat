@@ -1,1 +1,0 @@
-C:\Users\Guilherme\AppData\Local\Programs\Python\Python39\Scripts\pyuic6 -x C:\Users\Guilherme\PycharmProjects\Urna_Eletronica_CEIT\UI\tela_voto.ui -o C:\Users\Guilherme\PycharmProjects\Urna_Eletronica_CEIT\UI\tela_voto.py
