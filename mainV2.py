@@ -46,6 +46,7 @@ class MainWindow(QMainWindow):
             arquivo.close()
             return False
 
+    # Realiza login com o Token
     def login(self):
 
         # Se o alerta já tiver sido gerado e a senha já tiver sido inserida corretamente
@@ -192,6 +193,7 @@ class MainWindow(QMainWindow):
 
         self.chama_tela_confirmacao(chapa)
 
+    # Retorna a chapa escolhida da tela voto
     def get_chapa(self):
 
         chapa = -1
@@ -208,7 +210,7 @@ class MainWindow(QMainWindow):
 
         return chapa
 
-
+    # Chama Tela Confirmacao
     def chama_tela_confirmacao(self, chapa):
 
         if chapa == -1:
@@ -232,6 +234,7 @@ class MainWindow(QMainWindow):
             # Se o usuário clicar em 'votar' na tela confirmacao
             self.btn_votar.clicked.connect(self.votar)
 
+    # Preennche Tela Confirmacao
     def preenche_tela_confirmacao(self, token, num_voto):
 
         # Se o voto não for branco carrega os nomes da tabela
@@ -260,6 +263,7 @@ class MainWindow(QMainWindow):
             # Não preenche nada...
             pass
 
+    # Registra os Votos no arquivo
     def registra_voto(self, num_voto):
 
         token = self.input.text()
@@ -276,7 +280,10 @@ class MainWindow(QMainWindow):
         # Chama tela final
         self.stackedWidget.setCurrentWidget(self.tela_final)
 
-    # Registra voto
+        # Se o usuário clicar em 'finalizar' na tela final retorna à tela inicial
+        self.btn_finalizar.clicked.connect(self.finalizar)
+
+    # Chama a função de registro de votos
     def votar(self):
 
         # Invonca método registra voto passando a chapa como argumento
@@ -300,6 +307,9 @@ class MainWindow(QMainWindow):
     # Retorna à tela inicial
     def finalizar(self):
 
+        # Restaura janela
+        self.input.setText("")
+        self.label.setText("Insira seu Token de aluno: ")
         self.stackedWidget.setCurrentIndex(0)
 
     # Construtor Janela
