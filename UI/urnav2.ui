@@ -482,7 +482,7 @@ QPushButton:hover {
        <rect>
         <x>150</x>
         <y>170</y>
-        <width>371</width>
+        <width>800</width>
         <height>41</height>
        </rect>
       </property>
@@ -569,7 +569,7 @@ QPushButton:hover {
        <string notr="true">color: rgb(0, 74, 173);</string>
       </property>
       <property name="text">
-       <string>Votos Chapa 1 - Partido Voz Ativa (PVA): </string>
+       <string>Partido Voz Ativa (PVA): </string>
       </property>
      </widget>
      <widget class="QLabel" name="label_votos_chapa_2">
@@ -590,7 +590,7 @@ QPushButton:hover {
        <string notr="true">color: rgb(0, 74, 173);</string>
       </property>
       <property name="text">
-       <string>Votos Chapa 2 - Geração Consciente (GC): </string>
+       <string>Geração Consciente (GC): </string>
       </property>
      </widget>
      <widget class="QLabel" name="label_votos_chapa_3">
@@ -611,7 +611,7 @@ QPushButton:hover {
        <string notr="true">color: rgb(0, 74, 173);</string>
       </property>
       <property name="text">
-       <string>Votos Chapa 3 - Revolução da Nova Geração (RNG): </string>
+       <string>Revolução da Nova Geração (RNG): </string>
       </property>
      </widget>
     </widget>

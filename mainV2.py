@@ -147,6 +147,7 @@ class MainWindow(QMainWindow):
         self.label_votos_chapa_3.setText(self.label_votos_chapa_3.text() + str(total_votos[3])+" votos")
 
         # Confere o vencedor e Exibe na Tela
+        nome_vencedor = ['Branco', 'Partido Voz Ativa (PVA)', 'Geração Consciente (GC)', 'Revolução da Nova Geração (RNG)']
 
         vencedor = 0
 
@@ -155,7 +156,7 @@ class MainWindow(QMainWindow):
             if total_votos[x] > vencedor:
                 vencedor = x
 
-        self.label_vencedor.setText("Vencedor: Chapa " + str(vencedor))
+        self.label_vencedor.setText(f"Vencedor: Chapa {nome_vencedor[vencedor]}")
 
     # Exibe Tela Voto
     def chama_tela_voto(self):
