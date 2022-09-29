@@ -122,27 +122,24 @@ class MainWindow(QMainWindow):
         # Inicia a lista
         total_votos = [0, 0, 0, 0]
 
-        # Lê o primeiro caracter de cada linha da lista_votos
-        with open("Recursos/lista_votos.txt", "r") as arquivo:
+        # Lê a coluna valor_voto da tabela votos
+        linhas = self.db.ler_informacao(self.db, 'valor_voto', 'votos')
 
-            # Linhas é uma lista[] onde cada elemento é uma linha do arquivo
-            linhas = arquivo.readlines()
+        # Para cada linha da coluna valor_voto
+        for linha in linhas:
 
-            # Para cada linha do arquivo:
-            for linha in linhas:
+            # Pega número da chapa
+            num_voto = linha[0]
 
-                # Pega número da chapa
-                num_voto = int(linha[0])
-
-                # Adiciona os votos na lista
-                if num_voto == 0:
-                    total_votos[num_voto] += 1
-                if num_voto == 1:
-                    total_votos[num_voto] += 1
-                if num_voto == 2:
-                    total_votos[num_voto] += 1
-                if num_voto == 3:
-                    total_votos[num_voto] += 1
+            # Adiciona os votos na lista
+            if num_voto == 0:
+                total_votos[num_voto] += 1
+            if num_voto == 1:
+                total_votos[num_voto] += 1
+            if num_voto == 2:
+                total_votos[num_voto] += 1
+            if num_voto == 3:
+                total_votos[num_voto] += 1
 
         # Atualiza os label da tela com o valor dos votos
         self.label_votos_chapa_1.setText(self.label_votos_chapa_1.text() + str(total_votos[1])+" votos")
@@ -319,7 +316,7 @@ class MainWindow(QMainWindow):
         self.grupoChapa.setExclusive(True)
 
     # Função que popula o banco pela 1ª vez
-    def inicia_db(self):
+    '''def inicia_db(self):
 
         # Lê a tabela de alunos
         tabela_alunos = pd.read_excel('Recursos\\tabela_alunos.xlsx', engine='openpyxl')
@@ -343,7 +340,7 @@ class MainWindow(QMainWindow):
             print("Turma: ", turma)
 
             # Insere o aluno no banco
-            self.db.insere_aluno(self.db, token, nome, turma)
+            self.db.insere_aluno(self.db, token, nome, turma)'''
 
     # Construtor Janela
     def __init__(self):
