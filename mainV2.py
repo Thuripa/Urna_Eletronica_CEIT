@@ -13,6 +13,7 @@ class MainWindow(QMainWindow):
 
     # VALIDA TOKEN
     def valida_token(self, token):
+
         # Atribui o arquivo txt com os tokens para a variável arquivo
         with open("Recursos/lista_tokens.txt", "r") as arquivo:
 
@@ -173,9 +174,6 @@ class MainWindow(QMainWindow):
 
         self.stackedWidget.setCurrentWidget(self.tela_voto)
 
-        # Se usuário clicar em 'próximo' na tela voto
-        self.btn_chapa.clicked.connect(self.escolhe_chapa)
-
     # Captura a chapa escolhida na tela voto
     def escolhe_chapa(self):
 
@@ -282,20 +280,21 @@ class MainWindow(QMainWindow):
 
         token = self.input.text()
 
-        with open("Recursos/lista_votos.txt", "a") as arquivo:
+        # Se o Token ainda não foi usado
+        if not self.busca_token(token):
 
-            print("Registra voto do Token:", token, "para a chapa: ", str(num_voto))
+            with open("Recursos/lista_votos.txt", "a") as arquivo:
 
-            # Escreve no arquivo o número da chapa e o token
-            arquivo.write(str(num_voto) + " " + token + "\n")
+                print("Registra voto do Token:", token, "para a chapa: ", str(num_voto))
 
-            arquivo.close()
+                # Escreve no arquivo o número da chapa e o token
+                arquivo.write(str(num_voto) + " " + token + "\n")
 
-        # Chama tela final
-        self.stackedWidget.setCurrentWidget(self.tela_final)
+                # Chama tela final
+                self.stackedWidget.setCurrentWidget(self.tela_final)
 
-        # Se o usuário clicar em 'finalizar' na tela final retorna à tela inicial
-        self.btn_finalizar.clicked.connect(self.finalizar)
+        else:
+            print("Token já usado!")
 
     # Chama a função de registro de votos
     def votar(self):
@@ -343,6 +342,12 @@ class MainWindow(QMainWindow):
 
         # Se usuário clicar em 'finalizar' na tela resultados
         self.btn_finalizar_resultados.clicked.connect(self.finalizar)
+
+        # Se o usuário clicar em 'finalizar' na tela final
+        self.btn_finalizar.clicked.connect(self.finalizar)
+
+        # Se usuário clicar em 'próximo' na tela voto
+        self.btn_chapa.clicked.connect(self.escolhe_chapa)
 
         # Variável para contar tentativas
         self.tentativas = 0
