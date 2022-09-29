@@ -348,6 +348,8 @@ class MainWindow(QMainWindow):
         self.db_conector = DbConect
         self.db_conector.ler_informacao(self)
 
+        self.db_conector.popula_banco(self.db_conector)
+
         # "Apaga" o último usuário
         self.usuario.setText("Usuário: ")
 
