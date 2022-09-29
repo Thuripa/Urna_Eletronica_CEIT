@@ -274,7 +274,7 @@ class MainWindow(QMainWindow):
         # Se o Token ainda não foi usado
         if not self.busca_token(token):
             print("Registra voto do Token:", token, "para a chapa: ", str(num_voto))
-            DbConect.registra_voto(token, num_voto)
+            DbConect.registra_voto(DbConect, token, num_voto)
             # Chama tela final
             self.stackedWidget.setCurrentWidget(self.tela_final)
 
@@ -305,6 +305,7 @@ class MainWindow(QMainWindow):
     # Retorna à tela inicial
     def finalizar(self):
 
+        DbConect.fechar_conexao(self)
         # Restaura janela
         self.input.setText("")
         self.label.setText("Insira seu Token de aluno: ")

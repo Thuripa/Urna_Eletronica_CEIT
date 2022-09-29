@@ -5,6 +5,9 @@ import self
 class DbConect:
 
     # Cria conexão com o banco
+    def __init__(self):
+        self.conectar = None
+
     def conectar(self):
 
         # Cria uma conexão com o banco de dados
@@ -29,6 +32,8 @@ class DbConect:
         print(f'Versão do servidor: {db_info}')
 
     def ler_informacao(self, coluna, tabela):
+
+        # O problema esta aqui em algum ponto...
         DbConect.conectar(self)
         self.cursor.execute(f'select {coluna} from {tabela};')
 
@@ -49,14 +54,15 @@ class DbConect:
         DbConect.conectar(self)
         print("Populando tabela aluno...")
         self.cursor.execute("INSERT INTO alunos VALUES (%s, %s, %s);", (v1, v2, v3))
-        DbConect.fechar_conexao()
+        self.conectar.commit()
+        DbConect.fechar_conexao(self)
 
     def registra_voto(self, token, voto):
 
-        DbConect.conectar()
-        self.cursor.execute(f'INSERT INTO votos VALUES ({token},{voto});')
+        DbConect.conectar(self)
+        self.cursor.execute('INSERT INTO votos VALUES (%s, %s);', (token, voto))
         self.conectar.commit()
-        DbConect.fechar_conexao()
+        DbConect.fechar_conexao(self)
 
     def fechar_conexao(self):
 
@@ -70,9 +76,3 @@ class DbConect:
             print('Deu ruim :(')
 
 
-if __name__ == '__main__':
-    token = 'tEsTe0005'
-    nome = 'Teste funcao fechar'
-    turma = 604
-    DbConect.popula_banco(self, token, nome, turma)
-    DbConect.fechar_conexao(self)
