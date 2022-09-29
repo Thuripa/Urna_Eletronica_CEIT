@@ -26,20 +26,16 @@ class MainWindow(QMainWindow):
 
     # Verifica se o Token já foi usado
     def busca_token(self, token):
-        with open("Recursos/lista_votos.txt", "r") as arquivo:
 
-            # Linhas é uma lista[] onde cada elemento é uma linha do arquivo
-            linhas = arquivo.readlines()
-            # Busca o Token no registro de votos para saber se já foi usado, retorna TRUE se já foi usado
-            for linha in linhas:
+        linhas = DbConect.ler_informacao(self, 'aluno_token', 'votos')
+        # Busca o Token no registro de votos para saber se já foi usado, retorna TRUE se já foi usado
+        for linha in linhas:
 
-                # Se encontrar o Token na lista escreve "- Votou" do lado
-                if token.strip() == linha[-13:].strip():
-                    print("Token já usado!")
-                    arquivo.close()
-                    return True
+            # Se encontrar o Token na lista escreve "- Votou" do lado
+            if token == linha[0]:
+                print("Token já usado!")
+                return True
 
-            arquivo.close()
             return False
 
     # Realiza login com o Token
@@ -277,16 +273,10 @@ class MainWindow(QMainWindow):
 
         # Se o Token ainda não foi usado
         if not self.busca_token(token):
-
-            with open("Recursos/lista_votos.txt", "a") as arquivo:
-
-                print("Registra voto do Token:", token, "para a chapa: ", str(num_voto))
-
-                # Escreve no arquivo o número da chapa e o token
-                arquivo.write(str(num_voto) + " " + token + "\n")
-
-                # Chama tela final
-                self.stackedWidget.setCurrentWidget(self.tela_final)
+            print("Registra voto do Token:", token, "para a chapa: ", str(num_voto))
+            DbConect.registra_voto(token, num_voto)
+            # Chama tela final
+            self.stackedWidget.setCurrentWidget(self.tela_final)
 
         else:
             print("Token já usado!")

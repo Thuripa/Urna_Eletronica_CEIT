@@ -49,12 +49,21 @@ class DbConect:
         DbConect.conectar(self)
         print("Populando tabela aluno...")
         self.cursor.execute("INSERT INTO alunos VALUES (%s, %s, %s);", (v1, v2, v3))
-        self.cursor.close()
+        DbConect.fechar_conexao()
+
+    def registra_voto(self, token, voto):
+
+        DbConect.conectar()
+        self.cursor.execute(f'INSERT INTO votos VALUES ({token},{voto});')
         self.conectar.commit()
-        self.conectar.close()
+        DbConect.fechar_conexao()
 
     def fechar_conexao(self):
+
+        # Fecha tudo que é necessario
+        self.cursor.close()
         self.conectar.close()
+
         if self.conectar.closed != 0:
             print('Desconectado com sucesso')
         else:
