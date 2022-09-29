@@ -15,20 +15,14 @@ class MainWindow(QMainWindow):
     # VALIDA TOKEN
     def valida_token(self, token):
 
-        # Atribui o arquivo txt com os tokens para a variável arquivo
-        with open("Recursos/lista_tokens.txt", "r") as arquivo:
+        # Linhas é uma lista[] onde cada elemento é uma linha do arquivo
+        linhas = DbConect.ler_informacao(self, 'aluno_token', 'alunos')
 
-            # Linhas é uma lista[] onde cada elemento é uma linha do arquivo
-            linhas = arquivo.readlines()
-
-            # Se a primeira linha for um Token válido então a lista_tokens está descriptografada
-            if linhas[0].strip() == "ZTYyA5zKLtKq":
-                print("Arquivo lista_tokens em texto limpo")
-                # Se encontrar o token inserido pelo usuário dentro da lista de tokens retorna VERDADEIRO
-                for linha in linhas:
-                    if token == linha.strip():
-                        arquivo.close()
-                        return True
+        # Se encontrar o token inserido pelo usuário dentro da lista de tokens retorna VERDADEIRO
+        for linha in linhas:
+            if token == linha[0]:
+                print(linha[0])
+                return True
 
     # Verifica se o Token já foi usado
     def busca_token(self, token):
@@ -343,12 +337,6 @@ class MainWindow(QMainWindow):
         loadUi('UI\\urnav2.ui', self)
 
         self.tela_inicial = MainWindow
-
-        # Estabelece conexão com o banco de dados
-        self.db_conector = DbConect
-        self.db_conector.ler_informacao(self)
-
-        self.db_conector.popula_banco(self.db_conector)
 
         # "Apaga" o último usuário
         self.usuario.setText("Usuário: ")

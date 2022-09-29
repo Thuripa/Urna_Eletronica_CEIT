@@ -1,4 +1,5 @@
 import psycopg2
+import self
 
 
 class DbConect:
@@ -27,28 +28,42 @@ class DbConect:
         db_info = self.conectar.server_version
         print(f'Versão do servidor: {db_info}')
 
-
-
-    def ler_informacao(self):
+    def ler_informacao(self, coluna, tabela):
         DbConect.conectar(self)
-        self.cursor.execute('select * from alunos;')
+        self.cursor.execute(f'select {coluna} from {tabela};')
 
         linhas = self.cursor.fetchall()
 
-        for linha in linhas:
+        '''for linha in linhas:
             print(f'Token: {linha[0]}')
             print(f'Aluno: {linha[1]}')
             print(f'Turma: {linha[2]}')
-            print("")
+            print("")'''
+
+        DbConect.fechar_conexao(self)
+        return linhas
 
     # Função para popular o banco pela 1ª vez
-    def popula_banco(self):
-
-        v1 = "aa"
-        v2 = "aaa - Teste"
-        v3 = "123"
+    def popula_banco(self, v1, v2, v3):
 
         DbConect.conectar(self)
         print("Populando tabela aluno...")
         self.cursor.execute("INSERT INTO alunos VALUES (%s, %s, %s);", (v1, v2, v3))
         self.cursor.close()
+        self.conectar.commit()
+        self.conectar.close()
+
+    def fechar_conexao(self):
+        self.conectar.close()
+        if self.conectar.closed != 0:
+            print('Desconectado com sucesso')
+        else:
+            print('Deu ruim :(')
+
+
+if __name__ == '__main__':
+    token = 'tEsTe0005'
+    nome = 'Teste funcao fechar'
+    turma = 604
+    DbConect.popula_banco(self, token, nome, turma)
+    DbConect.fechar_conexao(self)
