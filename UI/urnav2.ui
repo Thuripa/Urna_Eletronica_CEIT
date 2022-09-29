@@ -156,7 +156,7 @@
      <enum>QFrame::Plain</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tela_inicial">
      <widget class="QLabel" name="label">
@@ -177,6 +177,7 @@
       <property name="font">
        <font>
         <pointsize>36</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -263,15 +264,6 @@
             <red>178</red>
             <green>200</green>
             <blue>230</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="PlaceholderText">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>0</red>
-            <green>29</green>
-            <blue>69</blue>
            </color>
           </brush>
          </colorrole>
@@ -538,6 +530,7 @@ QPushButton:hover {
       <property name="font">
        <font>
         <pointsize>20</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -626,6 +619,7 @@ QPushButton:hover {
       <property name="font">
        <font>
         <pointsize>20</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -1018,6 +1012,7 @@ QPushButton:hover {
       <property name="font">
        <font>
         <pointsize>20</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -1185,6 +1180,7 @@ QPushButton:hover {
       <property name="font">
        <font>
         <pointsize>20</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -1273,6 +1269,7 @@ QPushButton:hover {
      <property name="font">
       <font>
        <pointsize>14</pointsize>
+       <weight>50</weight>
        <bold>false</bold>
       </font>
      </property>
@@ -1295,6 +1292,7 @@ QPushButton:hover {
      <property name="font">
       <font>
        <pointsize>18</pointsize>
+       <weight>50</weight>
        <bold>false</bold>
       </font>
      </property>
@@ -1333,6 +1331,7 @@ QPushButton:hover {
       <font>
        <family>Nirmala UI</family>
        <pointsize>18</pointsize>
+       <weight>50</weight>
        <bold>false</bold>
       </font>
      </property>
