@@ -1,13 +1,11 @@
 import psycopg2
 import self
+import pandas as pd
 
 
 class DbConect:
 
     # Cria conexão com o banco
-    def __init__(self):
-        self.conectar = None
-
     def conectar(self):
 
         # Cria uma conexão com o banco de dados
@@ -33,8 +31,6 @@ class DbConect:
 
     def ler_informacao(self, coluna, tabela):
 
-        # O problema esta aqui em algum ponto...
-        DbConect.conectar(self)
         self.cursor.execute(f'select {coluna} from {tabela};')
 
         linhas = self.cursor.fetchall()
@@ -45,25 +41,24 @@ class DbConect:
             print(f'Turma: {linha[2]}')
             print("")'''
 
-        DbConect.fechar_conexao(self)
         return linhas
 
-    # Função para popular o banco pela 1ª vez
-    def popula_banco(self, v1, v2, v3):
+    # Insere aluno no banco
+    def insere_aluno(self, token, nome, turma):
 
-        DbConect.conectar(self)
         print("Populando tabela aluno...")
-        self.cursor.execute("INSERT INTO alunos VALUES (%s, %s, %s);", (v1, v2, v3))
-        self.conectar.commit()
-        DbConect.fechar_conexao(self)
 
+        self.cursor.execute("INSERT INTO alunos VALUES (%s, %s, %s);", (token, nome, turma))
+
+        self.conectar.commit()
+
+    # Registra o voto no banco
     def registra_voto(self, token, voto):
 
-        DbConect.conectar(self)
-        self.cursor.execute('INSERT INTO votos VALUES (%s, %s);', (token, voto))
+        self.cursor.execute(f'INSERT INTO votos VALUES (%s, %s);', (token, voto))
         self.conectar.commit()
-        DbConect.fechar_conexao(self)
 
+    # Encerra conexão
     def fechar_conexao(self):
 
         # Fecha tudo que é necessario
@@ -76,3 +71,9 @@ class DbConect:
             print('Deu ruim :(')
 
 
+if __name__ == '__main__':
+    token = 'tEsTe0005'
+    nome = 'Teste funcao fechar'
+    turma = 604
+    DbConect.popula_banco(self, token, nome, turma)
+    DbConect.fechar_conexao(self)

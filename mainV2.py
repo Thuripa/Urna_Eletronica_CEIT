@@ -5,6 +5,7 @@ from PyQt6.uic import loadUi
 from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QDialog, QApplication, QMainWindow
 
+import db_conector
 from db_conector import DbConect
 from alerta_bloqueio import Ui_alerta_bloqueio
 
@@ -16,7 +17,7 @@ class MainWindow(QMainWindow):
     def valida_token(self, token):
 
         # Linhas é uma lista[] onde cada elemento é uma linha do arquivo
-        linhas = DbConect.ler_informacao(self, 'aluno_token', 'alunos')
+        linhas = self.db.ler_informacao(self.db, 'aluno_token', 'alunos')
 
         # Se encontrar o token inserido pelo usuário dentro da lista de tokens retorna VERDADEIRO
         for linha in linhas:
@@ -27,13 +28,14 @@ class MainWindow(QMainWindow):
     # Verifica se o Token já foi usado
     def busca_token(self, token):
 
-        linhas = DbConect.ler_informacao(self, 'aluno_token', 'votos')
+        linhas = self.db.ler_informacao(self.db, 'aluno_token', 'votos')
+
         # Busca o Token no registro de votos para saber se já foi usado, retorna TRUE se já foi usado
         for linha in linhas:
 
-            # Se encontrar o Token na lista escreve "- Votou" do lado
+            # Se encontrar o Token na lista retorna True p/ Token já usado
             if token == linha[0]:
-                print("Token já usado!")
+                print(linha[0])
                 return True
 
             return False
@@ -274,7 +276,7 @@ class MainWindow(QMainWindow):
         # Se o Token ainda não foi usado
         if not self.busca_token(token):
             print("Registra voto do Token:", token, "para a chapa: ", str(num_voto))
-            DbConect.registra_voto(DbConect, token, num_voto)
+            self.db.registra_voto(self.db, token, num_voto)
             # Chama tela final
             self.stackedWidget.setCurrentWidget(self.tela_final)
 
@@ -305,7 +307,6 @@ class MainWindow(QMainWindow):
     # Retorna à tela inicial
     def finalizar(self):
 
-        DbConect.fechar_conexao(self)
         # Restaura janela
         self.input.setText("")
         self.label.setText("Insira seu Token de aluno: ")
@@ -319,6 +320,32 @@ class MainWindow(QMainWindow):
         self.rb_branco.setChecked(False)
         self.grupoChapa.setExclusive(True)
 
+    # Função que popula o banco pela 1ª vez
+    def inicia_db(self):
+
+        # Lê a tabela de alunos
+        tabela_alunos = pd.read_excel('Recursos\\tabela_alunos.xlsx', engine='openpyxl')
+
+        # Lê o número de linhas da tabela com base na coluna token
+        tokens = tabela_alunos['token']
+
+        # Abre conexão com o banco
+        self.db.conectar()
+
+        # Percorre linhas
+        for linha in range(0, len(tokens)):
+
+            token = tabela_alunos.iloc[linha, 0]
+            nome = tabela_alunos.iloc[linha, 1]
+            turma = int(tabela_alunos.iloc[linha, 2])
+
+            print("Insere o aluno:")
+            print("Token: ", token)
+            print("Nome: ", nome)
+            print("Turma: ", turma)
+
+            # Insere o aluno no banco
+            self.db.insere_aluno(self.db, token, nome, turma)
 
     # Construtor Janela
     def __init__(self):
@@ -328,6 +355,12 @@ class MainWindow(QMainWindow):
         loadUi('UI\\urnav2.ui', self)
 
         self.tela_inicial = MainWindow
+
+        # Cria conexão
+        self.db = db_conector.DbConect
+
+        # Inicia conexão
+        self.db.conectar(self.db)
 
         # "Apaga" o último usuário
         self.usuario.setText("Usuário: ")
