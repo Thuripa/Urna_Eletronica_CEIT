@@ -270,8 +270,8 @@
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>0</red>
-            <green>108</green>
-            <blue>249</blue>
+            <green>29</green>
+            <blue>69</blue>
            </color>
           </brush>
          </colorrole>
@@ -281,17 +281,17 @@
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>0</red>
-            <green>0</green>
-            <blue>0</blue>
+            <green>29</green>
+            <blue>69</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Button">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>240</red>
-            <green>240</green>
-            <blue>240</blue>
+            <red>178</red>
+            <green>200</green>
+            <blue>230</blue>
            </color>
           </brush>
          </colorrole>
@@ -299,8 +299,8 @@
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>0</red>
-            <green>0</green>
-            <blue>0</blue>
+            <green>29</green>
+            <blue>69</blue>
            </color>
           </brush>
          </colorrole>
@@ -308,35 +308,35 @@
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>0</red>
-            <green>0</green>
-            <blue>0</blue>
+            <green>29</green>
+            <blue>69</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Base">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>178</red>
+            <green>200</green>
+            <blue>230</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>240</red>
-            <green>240</green>
-            <blue>240</blue>
+            <red>178</red>
+            <green>200</green>
+            <blue>230</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="PlaceholderText">
           <brush brushstyle="SolidPattern">
-           <color alpha="128">
+           <color alpha="255">
             <red>0</red>
-            <green>0</green>
-            <blue>0</blue>
+            <green>29</green>
+            <blue>69</blue>
            </color>
           </brush>
          </colorrole>
@@ -398,10 +398,10 @@
          </colorrole>
          <colorrole role="PlaceholderText">
           <brush brushstyle="SolidPattern">
-           <color alpha="128">
+           <color alpha="255">
             <red>0</red>
-            <green>0</green>
-            <blue>0</blue>
+            <green>29</green>
+            <blue>69</blue>
            </color>
           </brush>
          </colorrole>
@@ -692,6 +692,9 @@ QPushButton:hover {
         <height>32</height>
        </size>
       </property>
+      <attribute name="buttonGroup">
+       <string notr="true">grupoChapa</string>
+      </attribute>
      </widget>
      <widget class="QRadioButton" name="rb_chapa1">
       <property name="geometry">
@@ -719,6 +722,9 @@ QPushButton:hover {
         <height>32</height>
        </size>
       </property>
+      <attribute name="buttonGroup">
+       <string notr="true">grupoChapa</string>
+      </attribute>
      </widget>
      <widget class="QRadioButton" name="rb_chapa3">
       <property name="geometry">
@@ -746,6 +752,9 @@ QPushButton:hover {
         <height>32</height>
        </size>
       </property>
+      <attribute name="buttonGroup">
+       <string notr="true">grupoChapa</string>
+      </attribute>
      </widget>
      <widget class="QRadioButton" name="rb_branco">
       <property name="geometry">
@@ -773,6 +782,9 @@ QPushButton:hover {
         <height>32</height>
        </size>
       </property>
+      <attribute name="buttonGroup">
+       <string notr="true">grupoChapa</string>
+      </attribute>
      </widget>
     </widget>
     <widget class="QWidget" name="tela_confirmacao">
@@ -1369,4 +1381,7 @@ QPushButton:hover {color: rgb(251, 173, 37); border: 2.4px solid #FBAD25;}</stri
  </widget>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="grupoChapa"/>
+ </buttongroups>
 </ui>

@@ -326,6 +326,14 @@ class MainWindow(QMainWindow):
         self.label.setText("Insira seu Token de aluno: ")
         self.usuario.setText('Usuário: ')
         self.stackedWidget.setCurrentIndex(0)
+        # Restaura os RadioButtons
+        self.grupoChapa.setExclusive(False)
+        self.rb_chapa1.setChecked(False)
+        self.rb_chapa2.setChecked(False)
+        self.rb_chapa3.setChecked(False)
+        self.rb_branco.setChecked(False)
+        self.grupoChapa.setExclusive(True)
+
 
     # Construtor Janela
     def __init__(self):
