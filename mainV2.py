@@ -234,7 +234,7 @@ class MainWindow(QMainWindow):
             self.label_1_sec.setText(f"1º Secretário: {alunos_chapa.iloc[3, 0]}")
             self.label_tes_geral.setText(f"Tesoureiro Geral: {alunos_chapa.iloc[4, 0]}")
             self.label_1_tes.setText(f"1º Tesoureiro: {alunos_chapa.iloc[5, 0]}")
-            self.label_dir_pedagogico.setText(f"Diretor Pedagógico:{alunos_chapa.iloc[6, 0]}")
+            self.label_dir_pedagogico.setText(f"Diretor Pedagógico: {alunos_chapa.iloc[6, 0]}")
             self.label_dir_cultura.setText(f"Diretor de Cultura: {alunos_chapa.iloc[7, 0]}")
             self.label_vice_presidente.setText(f"Vice-Presidente: {alunos_chapa.iloc[1, 0]}")
             self.label_dir_social.setText(f"Diretor Social: {alunos_chapa.iloc[9, 0]}")
@@ -242,7 +242,6 @@ class MainWindow(QMainWindow):
             self.label_2_suplente.setText(f"2º Suplente: {alunos_chapa.iloc[12, 0]}")
             self.label_1_suplente.setText(f"1º Suplente: {alunos_chapa.iloc[11, 0]}")
             self.label_dir_esporte.setText(f"Diretor de Esporte: {alunos_chapa.iloc[10, 0]}")
-            self.usuario.setText("Usuário: " + token)
 
 
         else:

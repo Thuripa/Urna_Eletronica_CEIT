@@ -71,9 +71,3 @@ class DbConect:
             print('Deu ruim :(')
 
 
-if __name__ == '__main__':
-    token = 'tEsTe0005'
-    nome = 'Teste funcao fechar'
-    turma = 604
-    DbConect.popula_banco(self, token, nome, turma)
-    DbConect.fechar_conexao(self)
