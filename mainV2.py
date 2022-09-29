@@ -30,15 +30,13 @@ class MainWindow(QMainWindow):
 
         linhas = self.db.ler_informacao(self.db, 'aluno_token', 'votos')
 
-        # Busca o Token no registro de votos para saber se já foi usado, retorna TRUE se já foi usado
         for linha in linhas:
-
-            # Se encontrar o Token na lista retorna True p/ Token já usado
             if token == linha[0]:
-                print(linha[0])
                 return True
+            else:
+                print("BT: ", linha[0])
 
-            return False
+        return False
 
     # Realiza login com o Token
     def login(self):
