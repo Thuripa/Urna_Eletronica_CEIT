@@ -5,7 +5,7 @@ from PyQt6.uic import loadUi
 from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QDialog, QApplication, QMainWindow
 
-import db_conector
+from db_conector import DbConect
 from alerta_bloqueio import Ui_alerta_bloqueio
 
 
@@ -345,8 +345,8 @@ class MainWindow(QMainWindow):
         self.tela_inicial = MainWindow
 
         # Estabelece conexão com o banco de dados
-        self.db_conector = db_conector.DbConect
-        self.db_conector.conectar(self.db_conector)
+        self.db_conector = DbConect
+        self.db_conector.ler_informacao(self)
 
         # "Apaga" o último usuário
         self.usuario.setText("Usuário: ")
