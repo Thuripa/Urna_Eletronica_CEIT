@@ -4,7 +4,6 @@ import pandas as pd
 
 
 class DbConect:
-
     # Cria conexão com o banco
     def conectar(self):
 

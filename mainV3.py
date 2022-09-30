@@ -142,18 +142,13 @@ class MainWindow(QMainWindow):
 
         # Confere o vencedor e Exibe na Tela
         nome_vencedor = ['Branco', 'Partido Voz Ativa (PVA)', 'Geração Consciente (GC)', 'Revolução da Nova Geração (RNG)']
-
-        vencedor = 0
-
-        # Percorre a lista com o total de votos
-        for x in range(1, len(total_votos)):
-
-            # Compara os votos das chapas atribuindo ao vencedor o número da chapa com mais votos
-            if total_votos[x] > vencedor:
-                vencedor = x
+        print(total_votos)
+        maior_voto = max(total_votos)
+        index_vencedor = total_votos.index(maior_voto)
+        print(index_vencedor)
 
         # Exibe o nome do vencedor no label_vencedor
-        self.label_vencedor.setText(f"Vencedor: Chapa {nome_vencedor[vencedor]}")
+        self.label_vencedor.setText(f"Vencedor: Chapa {nome_vencedor[index_vencedor]}")
 
     # Exibe Tela Voto
     def chama_tela_voto(self):
