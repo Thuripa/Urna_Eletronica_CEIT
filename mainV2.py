@@ -17,11 +17,12 @@ class MainWindow(QMainWindow):
     def valida_token(self, token):
 
         # Linhas é uma lista[] onde cada elemento é uma linha do arquivo
-        linhas = self.db.ler_informacao(self.db, 'aluno_token', 'alunos')
+        linhas = self.db.ler_informacao(self.db, '*', 'alunos')
 
         # Se encontrar o token inserido pelo usuário dentro da lista de tokens retorna VERDADEIRO
         for linha in linhas:
             if token == linha[0]:
+                self.usuario.setText(f'Alun@: {linha[1]} | Turma: {linha[2]}')
                 print(linha[0])
                 return True
 
@@ -71,7 +72,7 @@ class MainWindow(QMainWindow):
                 # Se o Token for a senha do admin (boas práticas de segurança foi pro espaço rs)
                 if self.input.text().strip() == "4DM1NS3NH400":
 
-                    self.usuario.setText("Usuário: " + self.input.text())
+                    self.usuario.setText('Usuário supremo \U0001F60E')
 
                     # Abre a tela_resultados
                     self.chama_tela_resultados()
@@ -79,14 +80,12 @@ class MainWindow(QMainWindow):
                 else:
 
                     if not self.busca_token(self.input.text()):
-
-                        self.usuario.setText("Usuário: " + self.input.text())
-
                         # Abre a tela_voto
                         self.chama_tela_voto()
 
                     else:
                         self.label.setText("Token já utilizado!")
+                        self.usuario.setText('Usuário: ')
 
             else:
                 print("Token Inválido!")
