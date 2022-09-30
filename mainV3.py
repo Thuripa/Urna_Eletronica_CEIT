@@ -220,8 +220,6 @@ class MainWindow(QMainWindow):
             # Pega o valor do token
             token = self.input.text()
 
-            self.usuario.setText(self.usuario.text() + token)
-
             # Invoca o método para preencher a tela
             self.preenche_tela_confirmacao(token, chapa)
 
