@@ -9,11 +9,11 @@ class DbConect:
 
         # Cria uma conexão com o banco de dados
         self.conectar = psycopg2.connect(
-            host='ec2-52-201-124-168.compute-1.amazonaws.com',
-            database='d7r4ff1hb1illg',
-            user='lqmxqsebbogrfq',
-            port=5432,
-            password='07d06f38ce7360ba18b365696501ab3e5416990c6f281bf3b2084032d142df8a')
+            host='',
+            database='',
+            user='',
+            port=,
+            password='')
 
         # Cria um "garçom" kkk
         self.cursor = self.conectar.cursor()
